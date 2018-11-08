@@ -12,8 +12,21 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        mPresenter.init();
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initViews() {
+
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_login;
     }
 
     @Override
