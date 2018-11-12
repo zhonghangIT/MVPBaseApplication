@@ -52,6 +52,13 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
         mainBinding = (ActivityMainBinding) binding;
         mainBinding.bottomNavigation.inflateMenu(R.menu.navigation);
         mainBinding.bottomNavigation.setOnNavigationItemSelectedListener(this);
+        setSupportActionBar(mainBinding.toolbarTitle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
+    @Override
+    public void initData() {
         homeFragment = HomeFragment.newInstance();
         infomationFragment = InfomationFragment.newInstance();
         activitiesFragment = ActivitiesFragment.newInstance();
@@ -65,12 +72,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                 .hide(activitiesFragment)
                 .hide(lotteryFragment)
                 .show(homeFragment).commit();
-        mainBinding.toolbarTitle.setTitle(R.string.title_home);
-    }
-
-    @Override
-    public void initData() {
-
+        mainBinding.textTitle.setText(R.string.title_home);
     }
 
     @Override
@@ -95,7 +97,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                     break;
             }
             fragmentTransaction.commit();
-            mainBinding.toolbarTitle.setTitle(menuItem.getTitle());
+            mainBinding.textTitle.setText(menuItem.getTitle());
             return true;
         }
         return false;
