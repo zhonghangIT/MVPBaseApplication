@@ -15,7 +15,9 @@ android {
         disable 'GoogleAppIndexingWarning'
         baseline file("lint-baseline.xml")
     }
-
+    dataBinding {
+        enabled = true
+    }
     buildTypes {
         release {
             minifyEnabled false

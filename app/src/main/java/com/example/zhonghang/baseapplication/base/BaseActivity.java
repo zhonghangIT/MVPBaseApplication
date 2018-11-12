@@ -1,5 +1,7 @@
 package com.example.zhonghang.baseapplication.base;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,11 +15,13 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
      * 对应的MVP中得Presenter,初始化在BaseActivity的onCreate中进行初始化，初始化的方法为initPresenter()
      */
     protected T mPresenter;
+    protected ViewDataBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+//        setContentView(getLayoutId());
+        binding = DataBindingUtil.setContentView(this, getLayoutId());
         mPresenter = initPresenter();
         mPresenter.attachView(this);
         initViews();

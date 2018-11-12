@@ -1,6 +1,8 @@
 package com.example.zhonghang.baseapplication.base;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,6 +25,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
      * 对Fragment的getActivity()方法可能为空进行处理。getActivity()在Attach()方法和Detach()方法之间不为空。mParentActivity在Attach()中加入在onDestroy()方法时置空
      */
     protected FragmentActivity mParentActivity;
+    protected ViewDataBinding binding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,10 +37,10 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutId(), container, false);
-        initViews(view);
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+        initViews();
         initData();
-        return view;
+        return binding.getRoot();
     }
 
     /**
@@ -47,10 +50,8 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
 
     /**
      * 对控件进行初始化
-     *
-     * @param parentView 该fragment的view
      */
-    protected abstract void initViews(View parentView);
+    protected abstract void initViews();
 
     /**
      * 返回该界面的resId
