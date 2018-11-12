@@ -1,11 +1,9 @@
 package com.example.zhonghang.baseapplication;
 
 import android.app.Activity;
-import android.app.Application;
 import android.os.Bundle;
 import android.support.multidex.MultiDexApplication;
 
-import com.example.frescolibrary.FrescoImageUtils;
 
 /**
  * @author zhonghang
@@ -16,7 +14,6 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-//        FrescoImageUtils.init(this);
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
