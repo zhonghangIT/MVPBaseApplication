@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.activity_download;
     }
 
     @Override

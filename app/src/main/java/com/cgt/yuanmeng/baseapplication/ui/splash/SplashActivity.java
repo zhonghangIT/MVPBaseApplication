@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.cgt.yuanmeng.baseapplication.R;
 import com.cgt.yuanmeng.baseapplication.base.BaseActivity;
 import com.cgt.yuanmeng.baseapplication.ui.main.MainActivity;
+import com.js.retrofitdownload.DownloadActivity;
 
 /**
  * @author zhonghang
@@ -40,7 +41,7 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
 
     @Override
     public void startToMainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, DownloadActivity.class);
         startActivity(intent);
         finish();
     }
