@@ -5,12 +5,17 @@ import android.view.View;
 
 import com.cgt.yuanmeng.baseapplication.R;
 import com.cgt.yuanmeng.baseapplication.base.BaseFragment;
+import com.cgt.yuanmeng.baseapplication.databinding.FragmentHomeBinding;
+import com.cgt.yuanmeng.baseapplication.print.DeviceConnFactoryManager;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * @author zhonghang
  * description:
  */
-public class HomeFragment extends BaseFragment<HomeContract.Presenter> implements HomeContract.View {
+public class HomeFragment extends BaseFragment<HomeContract.Presenter> implements HomeContract.View, View.OnClickListener {
+    FragmentHomeBinding mHomeBinding;
 
     /**
      * 创建一个静态方法用于创建fragment的对象
@@ -36,7 +41,8 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
 
     @Override
     public void initViews() {
-
+        mHomeBinding = (FragmentHomeBinding) mBinding;
+        mHomeBinding.btnPrint.setOnClickListener(this);
     }
 
     @Override
@@ -52,5 +58,18 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     @Override
     public HomeContract.Presenter initPresenter() {
         return new HomePresenter();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_print:
+//                mPresenter.print();
+//                EventBus.getDefault().post(DeviceConnFactoryManager.CONN_STATE_FAILED);
+                EventBus.getDefault().post("aaaaaaaa");
+                break;
+            default:
+                break;
+        }
     }
 }

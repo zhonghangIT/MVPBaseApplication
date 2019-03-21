@@ -28,7 +28,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     /**
      * 使用dataBinding
      */
-    protected ViewDataBinding binding;
+    protected ViewDataBinding mBinding;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,10 +40,10 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+        mBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
         initViews();
         initData();
-        return binding.getRoot();
+        return mBinding.getRoot();
     }
 
     /**

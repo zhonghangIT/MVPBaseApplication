@@ -18,12 +18,12 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
     /**
      * 使用databinding进行数据的绑定
      */
-    protected ViewDataBinding binding;
+    protected ViewDataBinding mBinding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, getLayoutId());
+        mBinding = DataBindingUtil.setContentView(this, getLayoutId());
         mPresenter = initPresenter();
         mPresenter.attachView(this);
         initViews();
