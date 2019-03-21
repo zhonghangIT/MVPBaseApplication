@@ -68,6 +68,7 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
     public void initData() {
         IntentFilter filter = new IntentFilter();
         filter.addAction(MainPresenter.ACTION_USB_PERMISSION);
+        filter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
         registerReceiver(receiver, filter);
         homeFragment = HomeFragment.newInstance();
         infomationFragment = InfomationFragment.newInstance();
@@ -136,6 +137,9 @@ public class MainActivity extends BaseActivity<MainContract.Presenter> implement
                             EventBus.getDefault().post(DeviceConnFactoryManager.CONN_STATE_FAILED);
                         }
                     }
+                    break;
+                case UsbManager.ACTION_USB_DEVICE_ATTACHED:
+                    mPresenter.connectPrint();
                     break;
                 default:
                     break;

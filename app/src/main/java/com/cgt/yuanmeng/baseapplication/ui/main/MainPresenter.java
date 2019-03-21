@@ -24,7 +24,8 @@ import io.reactivex.disposables.CompositeDisposable;
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View mView;
     private CompositeDisposable compositeDisposable;
-    public static final String ACTION_USB_PERMISSION="cn.com.cgt.yuanmeng.usb";
+    public static final String ACTION_USB_PERMISSION = "cn.com.cgt.yuanmeng.usb";
+
     public MainPresenter() {
 
     }
@@ -46,7 +47,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void connectPrint() {
-        UsbManager usbManager= (UsbManager) App.getApp().getSystemService(Context.USB_SERVICE);
+        UsbManager usbManager = (UsbManager) App.getApp().getSystemService(Context.USB_SERVICE);
         UsbDevice usbDevice = UsbUtils.getUsbDeviceList();
         if (usbDevice == null) {
             mView.setPrintState("未连接打印机");
@@ -66,24 +67,24 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(String state) {
+    public void onMessageEvent(Integer state) {
         Toast.makeText(App.getApp(), "EventBus执行", Toast.LENGTH_SHORT).show();
-//        switch (state) {
-//            case DeviceConnFactoryManager.CONN_STATE_DISCONNECT:
-//                mView.setPrintState("断开连接");
-//                break;
-//            case DeviceConnFactoryManager.CONN_STATE_CONNECTING:
-//                mView.setPrintState("连接中");
-//                break;
-//            case DeviceConnFactoryManager.CONN_STATE_CONNECTED:
-//                mView.setPrintState("已连接");
-//                break;
-//            case DeviceConnFactoryManager.CONN_STATE_FAILED:
-//                mView.setPrintState("连接失败");
-//                break;
-//            default:
-//                break;
-//        }
+        switch (state) {
+            case DeviceConnFactoryManager.CONN_STATE_DISCONNECT:
+                mView.setPrintState("断开连接");
+                break;
+            case DeviceConnFactoryManager.CONN_STATE_CONNECTING:
+                mView.setPrintState("连接中");
+                break;
+            case DeviceConnFactoryManager.CONN_STATE_CONNECTED:
+                mView.setPrintState("已连接");
+                break;
+            case DeviceConnFactoryManager.CONN_STATE_FAILED:
+                mView.setPrintState("连接失败");
+                break;
+            default:
+                break;
+        }
     }
 
 }

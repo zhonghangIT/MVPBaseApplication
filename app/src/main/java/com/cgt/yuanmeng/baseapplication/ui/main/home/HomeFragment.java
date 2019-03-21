@@ -64,9 +64,7 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_print:
-//                mPresenter.print();
-//                EventBus.getDefault().post(DeviceConnFactoryManager.CONN_STATE_FAILED);
-                EventBus.getDefault().post("aaaaaaaa");
+                mPresenter.print();
                 break;
             default:
                 break;
