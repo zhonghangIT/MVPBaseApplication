@@ -1,5 +1,6 @@
 package com.cgt.yuanmeng.baseapplication.base;
 
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -28,6 +29,12 @@ public abstract class BaseActivity<T extends IBasePresenter> extends AppCompatAc
         mPresenter.attachView(this);
         initViews();
         initData();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        //此处为处理扫描枪的热插拔导致界面重新加载bug，同时需要再manifest中配置android:configChanges="orientation|keyboard|keyboardHidden"
     }
 
     /**

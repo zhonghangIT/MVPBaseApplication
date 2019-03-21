@@ -7,6 +7,7 @@ import com.cgt.yuanmeng.baseapplication.R;
 import com.cgt.yuanmeng.baseapplication.base.BaseFragment;
 import com.cgt.yuanmeng.baseapplication.databinding.FragmentHomeBinding;
 import com.cgt.yuanmeng.baseapplication.print.DeviceConnFactoryManager;
+import com.cgt.yuanmeng.baseapplication.utils.Scanner;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -43,6 +44,8 @@ public class HomeFragment extends BaseFragment<HomeContract.Presenter> implement
     public void initViews() {
         mHomeBinding = (FragmentHomeBinding) mBinding;
         mHomeBinding.btnPrint.setOnClickListener(this);
+        Scanner scanner = new Scanner(mParentActivity);
+        scanner.scan(mHomeBinding.editQrcode);
     }
 
     @Override

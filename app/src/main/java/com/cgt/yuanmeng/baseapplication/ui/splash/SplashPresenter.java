@@ -42,7 +42,7 @@ public class SplashPresenter implements SplashContract.Presenter {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                     //休眠两秒
                 } catch (InterruptedException e) {
                     e.printStackTrace();
